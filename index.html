@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prathamesh Kulkarni — Portfolio</title>
+  <style>
+    :root {
+      --navy: #1a3a5c;
+      --navy-light: #e8f0f8;
+      --text: #1a1a1a;
+      --muted: #555;
+      --border: #e2e8f0;
+      --bg: #ffffff;
+      --surface: #f8fafc;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 56px;
+    }
+    .nav-logo { font-weight: 700; font-size: 1rem; color: var(--navy); }
+    nav ul { list-style: none; display: flex; gap: 2rem; }
+    nav a { text-decoration: none; font-size: 0.875rem; color: var(--muted); transition: color 0.2s; }
+    nav a:hover { color: var(--navy); }
+
+    /* ── HERO ── */
+    .hero { max-width: 720px; margin: 0 auto; padding: 5rem 2rem 4rem; }
+    .hero-tag {
+      display: inline-block;
+      background: var(--navy-light); color: var(--navy);
+      font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 4px 12px; border-radius: 999px; margin-bottom: 1.5rem;
+    }
+    h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; line-height: 1.15; color: var(--navy); margin-bottom: 1rem; }
+    .hero p { font-size: 1.1rem; color: var(--muted); max-width: 580px; margin-bottom: 2rem; }
+    .hero-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-block; padding: 10px 22px; border-radius: 8px;
+      font-size: 0.9rem; font-weight: 600; text-decoration: none; transition: all 0.2s;
+    }
+    .btn-primary { background: var(--navy); color: #fff; }
+    .btn-primary:hover { background: #142d48; }
+    .btn-outline { background: transparent; color: var(--navy); border: 1.5px solid var(--navy); }
+    .btn-outline:hover { background: var(--navy-light); }
+
+    /* ── SECTIONS ── */
+    section { max-width: 720px; margin: 0 auto; padding: 3.5rem 2rem; border-top: 1px solid var(--border); }
+    .section-label {
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--navy); margin-bottom: 1.25rem;
+    }
+    .group-label {
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--muted); margin: 2rem 0 0.85rem;
+      padding-bottom: 0.4rem; border-bottom: 1px solid var(--border);
+    }
+
+    /* ── GRIDS ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 1.1rem;
+    }
+
+    /* ── PROJECT CARD ── */
+    .project-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.2rem 1.4rem 1.4rem;
+      display: flex; flex-direction: column;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .project-card:hover { border-color: #93b8d8; transform: translateY(-2px); }
+    .project-card h3 { font-size: 0.96rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text); }
+    .project-card p { font-size: 0.855rem; color: var(--muted); line-height: 1.55; margin-bottom: 1rem; flex: 1; }
+    .card-footer { display: flex; flex-direction: column; gap: 0.55rem; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 5px; }
+    .tag { font-size: 0.69rem; font-weight: 600; padding: 3px 9px; border-radius: 999px; background: var(--navy-light); color: var(--navy); }
+
+    .btn-row { display: flex; flex-wrap: wrap; gap: 6px; }
+
+    .card-btn {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 0.775rem; font-weight: 600; color: var(--navy);
+      text-decoration: none; border: 1px solid var(--border);
+      border-radius: 6px; padding: 5px 10px; background: var(--bg);
+      transition: border-color 0.2s, background 0.2s; width: fit-content;
+    }
+    .card-btn:hover { border-color: var(--navy); background: var(--navy-light); }
+    .card-btn svg { width: 11px; height: 11px; flex-shrink: 0; }
+    .card-btn.accent { background: var(--navy); color: #fff; border-color: var(--navy); }
+    .card-btn.accent:hover { background: #142d48; }
+
+    /* ── FTC FEATURE CARD ── */
+    .ftc-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.5rem 1.75rem;
+      margin-top: 0.75rem;
+    }
+    .ftc-card-top {
+      display: flex; justify-content: space-between;
+      align-items: flex-start; gap: 1rem; flex-wrap: wrap;
+      margin-bottom: 0.75rem;
+    }
+    .ftc-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--text); margin-bottom: 0.2rem; }
+    .ftc-card .sub { font-size: 0.82rem; color: var(--muted); }
+    .ftc-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; margin-bottom: 1rem; }
+    .ftc-stats { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+    .ftc-stat-num { font-size: 1.3rem; font-weight: 700; color: var(--navy); line-height: 1; }
+    .ftc-stat-label { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
+    .ftc-divider { border: none; border-top: 1px solid var(--border); margin: 1rem 0; }
+
+    /* ── TECHNICAL DEEP DIVE ── */
+    .deep-dive-header {
+      font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.07em; text-transform: uppercase;
+      color: var(--navy); margin-bottom: 0.75rem;
+    }
+    .deep-dive-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.8rem;
+    }
+    .deep-dive-card {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 10px; padding: 1rem 1.1rem;
+      transition: border-color 0.2s;
+    }
+    .deep-dive-card:hover { border-color: var(--navy); }
+    .deep-dive-card h4 { font-size: 0.875rem; font-weight: 700; color: var(--text); margin-bottom: 0.3rem; }
+    .deep-dive-card p { font-size: 0.8rem; color: var(--muted); line-height: 1.5; margin-bottom: 0.75rem; }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+      gap: 1rem; margin-top: 0.75rem;
+    }
+    .skill-group h4 { font-size: 0.77rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--navy); margin-bottom: 0.5rem; }
+    .skill-group ul { list-style: none; }
+    .skill-group li { font-size: 0.855rem; color: var(--muted); padding: 4px 0; border-bottom: 1px solid var(--border); }
+    .skill-group li:last-child { border-bottom: none; }
+
+    /* ── ABOUT ── */
+    #about p { font-size: 1rem; color: var(--muted); max-width: 600px; margin-bottom: 1rem; }
+    .stat-row { display: flex; gap: 2rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .stat-num { font-size: 1.75rem; font-weight: 700; color: var(--navy); line-height: 1; }
+    .stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 4px; }
+
+    /* ── CONTACT ── */
+    #contact p { color: var(--muted); margin-bottom: 1.5rem; }
+    .contact-links { display: flex; flex-direction: column; gap: 0.75rem; }
+    .contact-link {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 0.925rem; color: var(--text);
+      text-decoration: none; padding: 12px 16px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 8px; transition: border-color 0.2s; max-width: 420px;
+    }
+    .contact-link:hover { border-color: var(--navy); }
+    .contact-link-icon {
+      width: 32px; height: 32px; background: var(--navy-light);
+      border-radius: 6px; display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 700; color: var(--navy); flex-shrink: 0;
+    }
+
+    footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: var(--muted); border-top: 1px solid var(--border); }
+
+    /* ── ARROW/EXTERNAL ICON ── */
+    .ico-ext { display: inline-block; }
+
+    @media (max-width: 600px) {
+      nav ul { gap: 1rem; }
+      .hero { padding: 3rem 1.25rem 2.5rem; }
+      section { padding: 2.5rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-logo">PK</div>
+    <ul>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-tag">Open to opportunities</div>
+    <h1>Prathamesh Kulkarni</h1>
+    <p>
+      High school engineer building accessible hardware and intelligent systems.
+      FTC Co-Founder, dual-enrollment CS student at Portland State, and creator of
+      a $193 AI-driven prosthetic arm.
+    </p>
+    <div class="hero-links">
+      <a href="#projects" class="btn btn-primary">View Projects</a>
+      <a href="mailto:prathamesh.iam@gmail.com" class="btn btn-outline">Get in Touch</a>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-label">Projects</div>
+
+    <!-- INDEPENDENT -->
+    <div class="group-label">Independent Research</div>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <h3>AI-Driven Prosthetic Forearm</h3>
+        <p>Low-cost ($193) myoelectric prosthetic using EMG sensors and AI signal smoothing on a Raspberry Pi. 100x cheaper than conventional $20k devices.</p>
+        <div class="card-footer">
+          <div class="tag-row">
+            <span class="tag">Raspberry Pi</span>
+            <span class="tag">ESP32</span>
+            <span class="tag">Python</span>
+            <span class="tag">AI/ML</span>
+            <span class="tag">EMG</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- FTC ROBOTICS — FEATURE CARD -->
+    <div class="group-label">FTC Robotics — Mechanical Mages #20288</div>
+
+    <div class="ftc-card">
+      <div class="ftc-card-top">
+        <div>
+          <h3>Mechanical Mages — FTC Team 20288</h3>
+          <div class="sub">Co-Founder &amp; Technical Lead &nbsp;·&nbsp; 2021 – Present &nbsp;·&nbsp; Bethany, Oregon</div>
+        </div>
+        <a class="card-btn accent" href="https://www.mechanicalmagesftc20288.org/home" target="_blank">
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M4 2h6v6"/></svg>
+          Team Website
+        </a>
+      </div>
+
+      <p>
+        18-student, 5th-year FTC team competing across Sunset, Westview, and Jesuit High Schools in Portland.
+        The team runs a full community STEM program (RoboRise) with Lego Robotics, Advanced Engineering,
+        and Python pathways. Competed in four seasons — PowerPlay, CenterStage, Into the Deep, and the
+        current Decode season — achieving a Top 75 Global ranking at the 2023-24 World Championships and
+        Winning Alliance Captain at the Oregon State Championship.
+      </p>
+
+      <div class="ftc-stats">
+        <div class="ftc-stat">
+          <div class="ftc-stat-num">Top 75</div>
+          <div class="ftc-stat-label">World Championship ranking</div>
+        </div>
+        <div class="ftc-stat">
+          <div class="ftc-stat-num">$50k+</div>
+          <div class="ftc-stat-label">Sponsorship raised</div>
+        </div>
+        <div class="ftc-stat">
+          <div class="ftc-stat-num">4</div>
+          <div class="ftc-stat-label">Competitive seasons</div>
+        </div>
+        <div class="ftc-stat">
+          <div class="ftc-stat-num">5,000+</div>
+          <div class="ftc-stat-label">Community members reached</div>
+        </div>
+      </div>
+
+      <hr class="ftc-divider" />
+
+      <!-- TECHNICAL DEEP DIVES -->
+      <div class="deep-dive-header">Technical Design Deep Dives</div>
+      <div class="deep-dive-grid">
+
+        <!-- TEMPLATE CARD — duplicate and fill in for each component -->
+        <div class="deep-dive-card">
+          <h4>Slide Extension System</h4>
+          <p>Multi-stage linear slides using Misumi SAR 330 rails. Custom-designed carriage brackets and tensioning mechanism for consistent extension under load.</p>
+          <div class="btn-row">
+            <div class="tag-row" style="margin-bottom:6px">
+              <span class="tag">Fusion 360</span>
+              <span class="tag">CNC</span>
+            </div>
+          </div>
+          <!-- Add a report/CAD link here when ready:
+          <a class="card-btn" href="YOUR_LINK" target="_blank">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M4 2h6v6"/></svg>
+            View CAD / Write-up
+          </a>
+          -->
+        </div>
+
+        <div class="deep-dive-card">
+          <h4>Intake Spoke Assembly</h4>
+          <p>3D-printed intake spokes with flexible tubing inserts for reliable game piece grip. Iterated geometry across three print revisions to balance stiffness and compliance.</p>
+          <div class="tag-row" style="margin-bottom:6px">
+            <span class="tag">3D Printing</span>
+            <span class="tag">Fusion 360</span>
+          </div>
+        </div>
+
+        <div class="deep-dive-card">
+          <h4>Deposition Box</h4>
+          <p>Fully 3D-printed deposition box with integrated LED pixel-count indicators. Designed to interface precisely with slide carriage mounting points.</p>
+          <div class="tag-row" style="margin-bottom:6px">
+            <span class="tag">3D Printing</span>
+            <span class="tag">Electronics Integration</span>
+          </div>
+        </div>
+
+        <!-- ADD MORE DEEP DIVE CARDS BELOW THIS LINE
+             Copy the block above, update the title, description, and tags.
+             Uncomment the card-btn link when you have a write-up or CAD file to link. -->
+
+        <div class="deep-dive-card" style="border-style: dashed; background: transparent;">
+          <h4 style="color: var(--muted);">Add a component</h4>
+          <p>Duplicate this card and fill in the component name, technical description, tags, and an optional link to a write-up or CAD file.</p>
+          <div class="tag-row">
+            <span class="tag">Template</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CAD 1 -->
+    <div class="group-label">CAD 1</div>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <h3>Duplicate Item — Screwdriver</h3>
+        <p>Precision-modeled a real screwdriver in Fusion 360, reverse-engineering geometry using calipers. Explored 3D print tolerances and complex shaft geometry.</p>
+        <div class="card-footer">
+          <div class="tag-row">
+            <span class="tag">Fusion 360</span>
+            <span class="tag">3D Printing</span>
+            <span class="tag">Reverse Engineering</span>
+          </div>
+          <a class="card-btn" href="https://sites.google.com/bsd48.org/duplicate-item-report/home" target="_blank">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M4 2h6v6"/></svg>
+            View Report
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <h3>Racecar — McLaren P1 &amp; BMW M4</h3>
+        <p>Modeled two full race cars from scratch. Solved complex multi-body fillet challenges by splitting and rejoining bodies to achieve smooth compound curves.</p>
+        <div class="card-footer">
+          <div class="tag-row">
+            <span class="tag">Fusion 360</span>
+            <span class="tag">Surface Modeling</span>
+            <span class="tag">3D Printing</span>
+          </div>
+          <a class="card-btn" href="https://sites.google.com/bsd48.org/racecarreport-prathamesh/home" target="_blank">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M4 2h6v6"/></svg>
+            View Report
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <h3>Stack Project — Japanese Art Tin</h3>
+        <p>Designed a 4-layer laser-cut diorama inside a tin can featuring a samurai, torii gate, moon, and clouds. Combined CAD precision with hand-finishing and coloring.</p>
+        <div class="card-footer">
+          <div class="tag-row">
+            <span class="tag">Fusion 360</span>
+            <span class="tag">Laser Cutting</span>
+            <span class="tag">Manufacturing</span>
+          </div>
+          <a class="card-btn" href="https://sites.google.com/bsd48.org/reportstackproject/home/build-timeline" target="_blank">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M4 2h6v6"/></svg>
+            View Report
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CAD 2 — class is ongoing, add new project cards here as you complete them -->
+    <div class="group-label">CAD 2</div>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <h3>Dynamic Animal — Lion Sculpture</h3>
+        <p>First exploration of Fusion 360's Form workspace. Sculpted a lion mid-pounce with organic geometry, flowing mane, and a naturalistic terrain base.</p>
+        <div class="card-footer">
+          <div class="tag-row">
+            <span class="tag">Fusion 360</span>
+            <span class="tag">T-Spline / Form</span>
+            <span class="tag">Organic Modeling</span>
+          </div>
+          <a class="card-btn" href="https://sites.google.com/bsd48.org/report-stack-project/home" target="_blank">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M4 2h6v6"/></svg>
+            View Report
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <h3>CNC Project — Trail Blazers Logo</h3>
+        <p>Machined the Portland Trail Blazers logo into wood using Fusion 360's Manufacturing workspace. Tuned toolpaths and letter spacing for clean edges.</p>
+        <div class="card-footer">
+          <div class="tag-row">
+            <span class="tag">Fusion 360</span>
+            <span class="tag">CNC Machining</span>
+            <span class="tag">Toolpath Generation</span>
+          </div>
+          <a class="card-btn" href="https://sites.google.com/bsd48.org/report-cnc-project-prathameshk/home" target="_blank">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M4 2h6v6"/></svg>
+            View Report
+          </a>
+        </div>
+      </div>
+
+      <!-- ADD NEW CAD 2 PROJECTS BELOW THIS LINE
+           Copy a project-card block above, update title/description/tags/link. -->
+
+    </div>
+
+    <!-- EE1 -->
+    <div class="group-label">Electrical Engineering 1</div>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <h3>2-Player Button Mashing Game</h3>
+        <p>Built a hardware game where two players race to press a button the most times in 10 seconds, with a buzzer-triggered counter circuit determining the winner.</p>
+        <div class="card-footer">
+          <div class="tag-row">
+            <span class="tag">Circuit Design</span>
+            <span class="tag">Breadboarding</span>
+            <span class="tag">Electrical Engineering</span>
+          </div>
+          <a class="card-btn" href="https://sites.google.com/bsd48.org/ee1finalproject-prathameshk/home" target="_blank">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M4 2h6v6"/></svg>
+            View Report
+          </a>
+        </div>
+      </div>
+
+      <!-- ADD NEW EE1 PROJECTS BELOW THIS LINE -->
+
+    </div>
+
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-label">Skills &amp; Tools</div>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <h4>Languages</h4>
+        <ul>
+          <li>Python</li>
+          <li>Java</li>
+          <li>C++</li>
+          <li>HTML / CSS / JS</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h4>CAD &amp; Design</h4>
+        <ul>
+          <li>Fusion 360 (Expert)</li>
+          <li>Onshape</li>
+          <li>T-Spline / Form</li>
+          <li>Surface Modeling</li>
+          <li>Parametric Design</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h4>Manufacturing</h4>
+        <ul>
+          <li>CNC Machining</li>
+          <li>Toolpath Generation</li>
+          <li>Laser Cutting</li>
+          <li>3D Printing / FDM</li>
+          <li>Calipers &amp; Metrology</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h4>Hardware &amp; EE</h4>
+        <ul>
+          <li>Raspberry Pi</li>
+          <li>ESP32</li>
+          <li>EMG Sensors</li>
+          <li>Circuit Design</li>
+          <li>Breadboarding</li>
+          <li>Servo / Motor Control</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h4>Software &amp; AI</h4>
+        <ul>
+          <li>AI Signal Processing</li>
+          <li>Neural Networks</li>
+          <li>Embedded Systems</li>
+          <li>Data Structures</li>
+          <li>Algorithms</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-label">About Me</div>
+    <p>
+      I'm a junior at Sunset High School in Portland, OR, concurrently taking CS courses
+      at Portland State University. I've spent 5+ years in competitive robotics and use
+      engineering to solve real-world problems — most recently building a prosthetic arm
+      that costs less than a pair of sneakers.
+    </p>
+    <p>
+      Outside of tech: Top 20 Oregon varsity racquetball player and Oregon Open Badminton
+      Champion (Men's Doubles, 2024).
+    </p>
+    <div class="stat-row">
+      <div class="stat">
+        <div class="stat-num">$193</div>
+        <div class="stat-label">Prosthetic arm cost</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">Top 75</div>
+        <div class="stat-label">FTC World ranking</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">5,000+</div>
+        <div class="stat-label">People reached via STEM outreach</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">$50k+</div>
+        <div class="stat-label">Fundraising raised</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-label">Get in Touch</div>
+    <p>Open to internships, research opportunities, and collaborations.</p>
+    <div class="contact-links">
+      <a href="mailto:prathamesh.iam@gmail.com" class="contact-link">
+        <div class="contact-link-icon">✉</div>
+        prathamesh.iam@gmail.com
+      </a>
+      <a href="https://github.com/YOUR_USERNAME" class="contact-link" target="_blank">
+        <div class="contact-link-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="var(--navy)">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+        </div>
+        github.com/YOUR_USERNAME
+      </a>
+      <a href="https://linkedin.com/in/YOUR_PROFILE" class="contact-link" target="_blank">
+        <div class="contact-link-icon">in</div>
+        linkedin.com/in/YOUR_PROFILE
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    Built with HTML &amp; CSS · Hosted on GitHub Pages
+  </footer>
+
+</body>
+</html>
