@@ -46,21 +46,30 @@
     .deep-dive-img {
       width: 100%;
       max-height: 400px;
-      object-fit: contain; /* Prevents cropping */
+      object-fit: contain;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 8px;
-      margin-bottom: 1rem;
       display: block;
     }
     .hero-img {
       width: 100%;
       max-height: 450px;
-      object-fit: contain; /* Prevents cropping */
+      object-fit: contain;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 12px;
       display: block;
+    }
+    .img-container {
+      margin-bottom: 1.25rem;
+    }
+    .img-caption {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.35rem;
+      text-align: center;
+      font-weight: 600;
     }
   </style>
 </head>
@@ -108,7 +117,7 @@
     <span class="tag">Fundraising</span>
   </div>
 
-  <!-- MAIN FULL-WIDTH HERO PHOTO (UNCROPPED) -->
+  <!-- MAIN FULL-WIDTH HERO PHOTO -->
   <div style="width:100%; margin-bottom:2.5rem;">
     <img src="WhatsApp Image 2026-08-24 at 11.22.20 PM.jpeg" alt="FTC Robot" class="hero-img" />
   </div>
@@ -189,8 +198,14 @@
             • <strong>Iteration 2 (Post-League 2 to States):</strong> Redesigned into a claw mounted on horizontal slides with a compact wrist and dual-servo rotation to increase torque, maintain speed, and secure specimen clipping onto the high bar. Cycle times dropped to under 7 seconds.
           </p>
           <h4 style="font-size:0.95rem; margin-bottom:0.5rem; color:var(--navy);">Photos & CAD Breakdown</h4>
-          <img src="Screenshot 2026-08-25 121405.png" alt="Claw Close Up" class="deep-dive-img" />
-          <img src="Mechanical Mages Engineering Portfolio  States 2024-2025.png" alt="Subsystem Pic" class="deep-dive-img" />
+          <div class="img-container">
+            <img src="Screenshot 2026-08-25 121405.png" alt="Claw Close Up" class="deep-dive-img" />
+            <div class="img-caption">Claw Close Up</div>
+          </div>
+          <div class="img-container">
+            <img src="Mechanical Mages Engineering Portfolio  States 2024-2025.png" alt="Subsystem Pic" class="deep-dive-img" />
+            <div class="img-caption">Subsystem Pic</div>
+          </div>
         </div>
       </details>
 
@@ -220,7 +235,10 @@
             • <strong>Iteration 4 (Qualifiers):</strong> Integrated heavy steel washers as flywheels to increase inertia, lowering the rate to 0.5 seconds per ball.
           </p>
           <h4 style="font-size:0.95rem; margin-bottom:0.5rem; color:var(--navy);">Photos & CAD Breakdown</h4>
-          <img src="shooter render image.png" alt="Shooter Render" class="deep-dive-img" />
+          <div class="img-container">
+            <img src="shooter render image.png" alt="Shooter Render" class="deep-dive-img" />
+            <div class="img-caption">Shooter Render</div>
+          </div>
         </div>
       </details>
 
@@ -248,9 +266,18 @@
             • <strong>Iteration 3:</strong> Final integration and stress testing within the main chassis frame.
           </p>
           <h4 style="font-size:0.95rem; margin-bottom:0.5rem; color:var(--navy);">Photos & CAD Breakdown</h4>
-          <img src="Screenshot 2025-03-20 194023.png" alt="V1 PTO" class="deep-dive-img" />
-          <img src="Screenshot 2025-09-12 201517.png" alt="V2 Sprung PTO" class="deep-dive-img" />
-          <img src="Screenshot 2026-05-11 223220.png" alt="V2 Close up in Chassis" class="deep-dive-img" />
+          <div class="img-container">
+            <img src="Screenshot 2025-03-20 194023.png" alt="V1" class="deep-dive-img" />
+            <div class="img-caption">V1</div>
+          </div>
+          <div class="img-container">
+            <img src="Screenshot 2025-09-12 201517.png" alt="V2 Sprung PTO" class="deep-dive-img" />
+            <div class="img-caption">V2 Sprung PTO</div>
+          </div>
+          <div class="img-container">
+            <img src="Screenshot 2026-05-11 223220.png" alt="V2 Close up in Chassis" class="deep-dive-img" />
+            <div class="img-caption">V2 Close up in Chassis</div>
+          </div>
         </div>
       </details>
 
@@ -278,8 +305,14 @@
             • <strong>Iteration 3:</strong> CNC-milled 1/8" 6061 aluminum plates featuring strategic pocketing for structural strength and weight reduction.
           </p>
           <h4 style="font-size:0.95rem; margin-bottom:0.5rem; color:var(--navy);">Photos & CAD Breakdown</h4>
-          <img src="chassis image.png" alt="Final Metal Chassis" class="deep-dive-img" />
-          <img src="Screenshot 2026-02-01 182402.png" alt="V1 Wooden Chassis" class="deep-dive-img" />
+          <div class="img-container">
+            <img src="chassis image.png" alt="Final Metal Chassis" class="deep-dive-img" />
+            <div class="img-caption">Final Metal Chassis</div>
+          </div>
+          <div class="img-container">
+            <img src="Screenshot 2026-02-01 182402.png" alt="V1 Wooden Chassis" class="deep-dive-img" />
+            <div class="img-caption">V1 Wooden Chassis</div>
+          </div>
         </div>
       </details>
 
@@ -306,7 +339,9 @@
             • <strong>Iteration 2:</strong> Final printing in high-density PETG to ensure strength and impact resistance under full hanging weight.
           </p>
           <h4 style="font-size:0.95rem; margin-bottom:0.5rem; color:var(--navy);">Photos & CAD Breakdown</h4>
-          <img src="Mechanical Mages Worlds Portfolio.png" alt="Passive Hanging Claws" class="deep-dive-img" />
+          <div class="img-container">
+            <img src="Mechanical Mages Worlds Portfolio.png" alt="Passive Hanging Claws" class="deep-dive-img" />
+          </div>
         </div>
       </details>
 
