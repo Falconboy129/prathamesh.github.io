@@ -5,6 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FTC Robotics — Prathamesh Kulkarni</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Expandable Deep Dive Styling */
+    details.deep-dive-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      transition: border-color 0.2s;
+    }
+    details.deep-dive-card[open] {
+      border-color: #93b8d8;
+    }
+    details.deep-dive-card summary {
+      list-style: none;
+      cursor: pointer;
+    }
+    details.deep-dive-card summary::-webkit-details-marker {
+      display: none;
+    }
+    .summary-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .expand-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--navy);
+      background: var(--navy-light);
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+    .expanded-content {
+      margin-top: 1.25rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+    }
+  </style>
 </head>
 <body>
 
@@ -50,22 +88,21 @@
     <span class="tag">Fundraising</span>
   </div>
 
-  <!-- MAIN PHOTO + SIDE PHOTOS -->
-  <div style="display:grid; grid-template-columns: 2fr 1fr; gap:0.75rem; margin-bottom:2.5rem;">
-      <img src="WhatsApp Image 2026-08-24 at 11.22.20 PM.jpeg" alt="FTC Robot" style="width:100%;height:100%;object-fit:cover;border-radius:10px;"> 
+  <!-- MAIN FULL-WIDTH HERO PHOTO -->
+  <div style="width:100%; margin-bottom:2.5rem;">
+    <img src="WhatsApp Image 2026-08-24 at 11.22.20 PM.jpeg" alt="FTC Robot" style="width:100%; max-height:500px; object-fit:cover; border-radius:12px; display:block;" />
   </div>
 
   <!-- OVERVIEW -->
   <div style="margin-bottom:2rem;">
     <div class="section-label">Overview</div>
-    <p style="font-size:1rem; color:var(--muted); line-height:1.75; max-width:700px; margin-bottom:1rem;">
+    <p style="font-size:1rem; color:var(--muted); line-height:1.75; max-width:100%; margin-bottom:1rem;">
       Mechanical Mages is a non-profit organization and FTC robotics team (Team 20288) competing across Sunset,
       Westview, and Jesuit High Schools in Portland, Oregon. Beyond competing, the organization is focused on
       spreading robotics awareness in the community — running FLL summer camps for elementary schoolers,
       hosting mock FLL tournaments, and organizing official FLL tournament events. I co-founded the team
       and lead all mechanical design, CNC fabrication, and strategic direction.
     </p>
-    <!-- Add more context here -->
   </div>
 
   <!-- STATS -->
@@ -103,93 +140,163 @@
   <!-- TECHNICAL DEEP DIVES -->
   <div style="margin:2rem 0;">
     <div class="section-label">Technical Design Deep Dives</div>
-    <p style="color:var(--muted); font-size:0.9rem; margin-bottom:1.5rem; max-width:580px;">
-      A closer look at specific mechanisms and components I designed. Each entry covers the design problem,
-      my approach, iterations, and outcome.
+    <p style="color:var(--muted); font-size:0.9rem; margin-bottom:1.5rem;">
+      Click on any deep dive below to view build timelines, engineering iterations, and technical photos.
     </p>
 
-    <div class="grid-3" style="gap:1rem;">
+    <div style="display:flex; flex-direction:column; gap:1.2rem;">
 
-      <div class="card">
-        <h3>Custom Differential Claw Deposition SubSystem</h3>
-        <p>
-          A multi servo deposition system mounted on a set of linear slides with a claw with 2 degrees of freedom allowing for both sample and specimen deposition in the INTO THE DEEP Season (25-26)
-          <!-- Add: design constraints, iterations, tolerance notes, CAD screenshots -->
-        </p>
-        <div class="card-footer">
-          <div class="tag-row">
+      <!-- DEEP DIVE 1 -->
+      <details class="deep-dive-card">
+        <summary>
+          <div class="summary-header">
+            <h3>Custom Differential Claw Deposition SubSystem</h3>
+            <span class="expand-badge">Click to Expand ▼</span>
+          </div>
+          <p style="color:var(--muted); font-size:0.875rem; margin-top:0.4rem;">
+            A multi servo deposition system mounted on a set of linear slides with a claw with 2 degrees of freedom allowing for both sample and specimen deposition in the INTO THE DEEP Season (25-26).
+          </p>
+          <div class="tag-row" style="margin-top:0.6rem;">
             <span class="tag">Fusion 360</span>
             <span class="tag">CNC</span>
             <span class="tag">Linear Motion</span>
           </div>
-          <!-- Uncomment and add a link when you have a write-up or CAD export:
-          <a class="card-btn" href="YOUR_LINK" target="_blank">
-            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M4 2h6v6"/></svg>
-            View CAD / Write-up
-          </a>
-          -->
+        </summary>
+        <div class="expanded-content">
+          <h4 style="font-size:0.95rem; margin-bottom:0.5rem; color:var(--navy);">Build Timeline & Iterations</h4>
+          <p style="font-size:0.875rem; color:var(--muted); margin-bottom:1rem;">
+            • <strong>Week 1-2:</strong> CAD prototyping in Fusion 360; calculated torque specs for multi-servo differential movement.<br>
+            • <strong>Week 3:</strong> CNC cutting aluminum plates and 3D printing custom high-tolerance pitch gears.<br>
+            • <strong>Week 4:</strong> Final assembly, wiring routing through slides, and driver testing.
+          </p>
+          <h4 style="font-size:0.95rem; margin-bottom:0.5rem; color:var(--navy);">Photos & CAD Breakdown</h4>
+          <div class="photo-placeholder" style="width:100%; height:200px; border-radius:8px;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            <span style="font-size:0.8rem;">Add photos / CAD renders of Custom Differential Claw here</span>
+          </div>
         </div>
-      </div>
+      </details>
 
-      <div class="card">
-        <h3>5in Ball Diameter Shooter</h3>
-        <p>
-          A dual motor launcher using a flywheel mounted on a ball bearing turret with an adjustable hood for the manipulation of the balls release angle
-          <!-- Add: material choices, print settings, failure modes, final design -->
-        </p>
-        <div class="card-footer">
-          <div class="tag-row">
+      <!-- DEEP DIVE 2 -->
+      <details class="deep-dive-card">
+        <summary>
+          <div class="summary-header">
+            <h3>5in Ball Diameter Shooter</h3>
+            <span class="expand-badge">Click to Expand ▼</span>
+          </div>
+          <p style="color:var(--muted); font-size:0.875rem; margin-top:0.4rem;">
+            A dual motor launcher using a flywheel mounted on a ball bearing turret with an adjustable hood for the manipulation of the ball's release angle.
+          </p>
+          <div class="tag-row" style="margin-top:0.6rem;">
             <span class="tag">3D Printing</span>
+            <span class="tag">Flywheel Physics</span>
             <span class="tag">Iteration</span>
           </div>
+        </summary>
+        <div class="expanded-content">
+          <h4 style="font-size:0.95rem; margin-bottom:0.5rem; color:var(--navy);">Build Timeline & Iterations</h4>
+          <p style="font-size:0.875rem; color:var(--muted); margin-bottom:1rem;">
+            • <strong>Phase 1:</strong> Benchmarking compression ratios for 5in balls.<br>
+            • <strong>Phase 2:</strong> Printing initial turret mounts and integrating dual high-RPM motors.<br>
+            • <strong>Phase 3:</strong> Custom hood geometry tuning for high-accuracy arc shots.
+          </p>
+          <h4 style="font-size:0.95rem; margin-bottom:0.5rem; color:var(--navy);">Photos & CAD Breakdown</h4>
+          <div class="photo-placeholder" style="width:100%; height:200px; border-radius:8px;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            <span style="font-size:0.8rem;">Add photos / CAD renders of 5in Shooter here</span>
+          </div>
         </div>
-      </div>
+      </details>
 
-      <div class="card">
-        <h3>Custom PTO </h3>
-        <p>
-          A Mechanism which transfers the rotation power of 4 drivetrain motors to downward facing linear slides allowing for robot elevation. 
-        </p>
-        <div class="card-footer">
-          <div class="tag-row">
+      <!-- DEEP DIVE 3 -->
+      <details class="deep-dive-card">
+        <summary>
+          <div class="summary-header">
+            <h3>Custom PTO (Power Take-Off)</h3>
+            <span class="expand-badge">Click to Expand ▼</span>
+          </div>
+          <p style="color:var(--muted); font-size:0.875rem; margin-top:0.4rem;">
+            A mechanism which transfers the rotational power of 4 drivetrain motors to downward-facing linear slides, allowing for powered robot elevation.
+          </p>
+          <div class="tag-row" style="margin-top:0.6rem;">
             <span class="tag">3D Printing</span>
+            <span class="tag">Gears</span>
             <span class="tag">Electronics Integration</span>
           </div>
+        </summary>
+        <div class="expanded-content">
+          <h4 style="font-size:0.95rem; margin-bottom:0.5rem; color:var(--navy);">Build Timeline & Iterations</h4>
+          <p style="font-size:0.875rem; color:var(--muted); margin-bottom:1rem;">
+            • <strong>Phase 1:</strong> Designing pneumatic/servo actuary disengage gearboxes.<br>
+            • <strong>Phase 2:</strong> Stress testing high-torque load transfers under full robot weight.
+          </p>
+          <h4 style="font-size:0.95rem; margin-bottom:0.5rem; color:var(--navy);">Photos & CAD Breakdown</h4>
+          <div class="photo-placeholder" style="width:100%; height:200px; border-radius:8px;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            <span style="font-size:0.8rem;">Add photos / CAD renders of Custom PTO here</span>
+          </div>
         </div>
-      </div>
+      </details>
 
-        <div class="card" style="border-style:dashed; background:transparent;">
-        <h3 style="color:var(--muted);">Pocketed Aluminum Chassis</h3>
-        <p style="color:var(--muted);">Parralel Plate Dead Axle Chassis with 6061 Aluminum 1/8in thick sheets. Used to create a structurally sound and robust robot base while strategic pocketing allows for weight reduction and stronger plates</p>
-        <div class="card-footer">
-          <div class="tag-row">
+      <!-- DEEP DIVE 4 -->
+      <details class="deep-dive-card">
+        <summary>
+          <div class="summary-header">
+            <h3>Pocketed Aluminum Chassis</h3>
+            <span class="expand-badge">Click to Expand ▼</span>
+          </div>
+          <p style="color:var(--muted); font-size:0.875rem; margin-top:0.4rem;">
+            Parallel Plate Dead Axle Chassis with 6061 Aluminum 1/8in thick sheets. Used to create a structurally sound and robust robot base while strategic pocketing allows for weight reduction.
+          </p>
+          <div class="tag-row" style="margin-top:0.6rem;">
             <span class="tag">Fabrication</span>
+            <span class="tag">CNC Machining</span>
+            <span class="tag">6061 Aluminum</span>
+          </div>
+        </summary>
+        <div class="expanded-content">
+          <h4 style="font-size:0.95rem; margin-bottom:0.5rem; color:var(--navy);">Build Timeline & Iterations</h4>
+          <p style="font-size:0.875rem; color:var(--muted); margin-bottom:1rem;">
+            • <strong>Phase 1:</strong> FEA stress analysis in Fusion 360 to optimize light-weighting patterns.<br>
+            • <strong>Phase 2:</strong> CNC Milling plates from 1/8" 6061 stock and deburring.
+          </p>
+          <h4 style="font-size:0.95rem; margin-bottom:0.5rem; color:var(--navy);">Photos & CAD Breakdown</h4>
+          <div class="photo-placeholder" style="width:100%; height:200px; border-radius:8px;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            <span style="font-size:0.8rem;">Add photos / CAD renders of Chassis here</span>
           </div>
         </div>
-      </div>
+      </details>
 
-      <div class="card" style="border-style:dashed; background:transparent;">
-        <h3 style="color:var(--muted);">Passive Hanging Claws</h3>
-        <p style="color:var(--muted);">3D Printed Passive Lifting Mechanism using geometry of downward facing slopes to hang robot off of bar elevated above ground. </p>
-        <div class="card-footer">
-          <div class="tag-row">
+      <!-- DEEP DIVE 5 -->
+      <details class="deep-dive-card">
+        <summary>
+          <div class="summary-header">
+            <h3>Passive Hanging Claws</h3>
+            <span class="expand-badge">Click to Expand ▼</span>
+          </div>
+          <p style="color:var(--muted); font-size:0.875rem; margin-top:0.4rem;">
+            3D Printed Passive Lifting Mechanism using geometry of downward facing slopes to hang robot off of bar elevated above ground.
+          </p>
+          <div class="tag-row" style="margin-top:0.6rem;">
             <span class="tag">3D Printed</span>
+            <span class="tag">PETG</span>
+            <span class="tag">Passive Geometry</span>
+          </div>
+        </summary>
+        <div class="expanded-content">
+          <h4 style="font-size:0.95rem; margin-bottom:0.5rem; color:var(--navy);">Build Timeline & Iterations</h4>
+          <p style="font-size:0.875rem; color:var(--muted); margin-bottom:1rem;">
+            • <strong>Phase 1:</strong> Rapid prototyping slope profiles using PLA.<br>
+            • <strong>Phase 2:</strong> Final print in high-density PETG for maximum hook strength and impact resistance.
+          </p>
+          <h4 style="font-size:0.95rem; margin-bottom:0.5rem; color:var(--navy);">Photos & CAD Breakdown</h4>
+          <div class="photo-placeholder" style="width:100%; height:200px; border-radius:8px;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            <span style="font-size:0.8rem;">Add photos / CAD renders of Passive Hanging Claws here</span>
           </div>
         </div>
-      </div>
-      
-
-      <!-- ── ADD MORE DEEP DIVE CARDS BELOW ──
-           Copy a card block above, update the title, description, tags,
-           and uncomment the card-btn link when you have a write-up ready. -->
-
-      <div class="card" style="border-style:dashed; background:transparent;">
-        <h3 style="color:var(--muted);">Add a component</h3>
-        <p style="color:var(--muted);">Duplicate a card above and fill in your component name, technical description, tags, and an optional link.</p>
-        <div class="card-footer">
-          <div class="tag-row"><span class="tag">Template</span></div>
-        </div>
-      </div>
+      </details>
 
     </div>
   </div>
