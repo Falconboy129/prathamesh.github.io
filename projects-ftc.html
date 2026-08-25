@@ -42,12 +42,24 @@
       padding-top: 1.25rem;
       border-top: 1px solid var(--border);
     }
+    /* NO-CROP IMAGE STYLING */
     .deep-dive-img {
       width: 100%;
-      max-height: 350px;
-      object-fit: cover;
+      max-height: 400px;
+      object-fit: contain; /* Prevents cropping */
+      background: var(--surface);
+      border: 1px solid var(--border);
       border-radius: 8px;
       margin-bottom: 1rem;
+      display: block;
+    }
+    .hero-img {
+      width: 100%;
+      max-height: 450px;
+      object-fit: contain; /* Prevents cropping */
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
       display: block;
     }
   </style>
@@ -96,9 +108,9 @@
     <span class="tag">Fundraising</span>
   </div>
 
-  <!-- MAIN FULL-WIDTH HERO PHOTO -->
+  <!-- MAIN FULL-WIDTH HERO PHOTO (UNCROPPED) -->
   <div style="width:100%; margin-bottom:2.5rem;">
-    <img src="WhatsApp Image 2026-08-24 at 11.22.20 PM.jpeg" alt="FTC Robot" style="width:100%; max-height:500px; object-fit:cover; border-radius:12px; display:block;" />
+    <img src="WhatsApp Image 2026-08-24 at 11.22.20 PM.jpeg" alt="FTC Robot" class="hero-img" />
   </div>
 
   <!-- OVERVIEW -->
