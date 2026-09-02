@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Photos & Sneak Peeks — Prathamesh Kulkarni</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Gallery Grid Setup */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .photo-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .photo-card:hover {
+      border-color: #93b8d8;
+      transform: translateY(-3px);
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      display: block;
+      background: var(--surface);
+    }
+
+    .photo-info {
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .photo-info h3 {
+      font-size: 1.05rem;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
+
+    .photo-info p {
+      font-size: 0.865rem;
+      color: var(--muted);
+      line-height: 1.55;
+      margin-bottom: 1rem;
+      flex-grow: 1;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">PK</a>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li class="has-dropdown">
+      <a href="projects.html">Projects</a>
+      <div class="dropdown">
+        <a href="projects-prosthetic.html">AI Prosthetic Arm</a>
+        <a href="projects-ftc.html">FTC Robotics</a>
+        <a href="projects-classes.html">Class Projects</a>
+        <a href="projects-pc.html">Custom PC Build</a>
+      </div>
+    </li>
+    <li><a href="photos.html" class="active">Photos</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-wide">
+
+  <div class="section-label">Gallery</div>
+  <h1 style="margin-bottom:0.5rem;">Photo Portfolio & Sneak Peeks</h1>
+  <p style="color:var(--muted); font-size:1rem; margin-bottom:2rem; max-width:600px;">
+    Behind-the-scenes snapshots, technical CAD breakdowns, prototype iterations, and sneak peeks of upcoming builds across FTC robotics and engineering projects.
+  </p>
+
+  <!-- QUICK ACTION DEEP DIVE BANNER -->
+  <div style="background:var(--navy-light); border:1px solid var(--border); border-radius:12px; padding:1.5rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:2.5rem;">
+    <div>
+      <h3 style="color:var(--navy); margin-bottom:0.25rem;">Looking for Technical Deep Dives?</h3>
+      <p style="color:var(--muted); font-size:0.875rem; margin:0;">Explore detailed build timelines, iteration notes, and high-res CAD renders on the FTC page.</p>
+    </div>
+    <a href="projects-ftc.html#deep-dives" class="btn btn-primary" style="white-space:nowrap;">View FTC Deep Dives →</a>
+  </div>
+
+  <!-- PHOTO GALLERY GRID -->
+  <div class="photo-grid">
+
+    <!-- Card 1 -->
+    <div class="photo-card">
+      <img src="Screenshot 2026-08-25 121405.png" alt="Differential Claw Close Up" />
+      <div class="photo-info">
+        <div class="tag-row" style="margin-bottom:0.5rem;">
+          <span class="tag">FTC Robotics</span>
+          <span class="tag">CAD Render</span>
+        </div>
+        <h3>Differential Claw Mechanism</h3>
+        <p>Close-up CAD design view of the dual-degree-of-freedom claw mechanism engineered for efficient sample/specimen pickup.</p>
+        <div class="card-footer">
+          <a class="card-btn" href="projects-ftc.html">See Deep Dive →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="photo-card">
+      <img src="shooter render image.png" alt="5in Ball Shooter Render" />
+      <div class="photo-info">
+        <div class="tag-row" style="margin-bottom:0.5rem;">
+          <span class="tag">Sneak Peek</span>
+          <span class="tag">Fusion 360</span>
+        </div>
+        <h3>Flywheel Ball Shooter V4</h3>
+        <p>Iteration 4 design render featuring heavy steel flywheel integration for reduced cycle times and improved stability.</p>
+        <div class="card-footer">
+          <a class="card-btn" href="projects-ftc.html">See Deep Dive →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="photo-card">
+      <img src="Screenshot 2026-08-24 215520.png" alt="AI Prosthetic Arm Setup" />
+      <div class="photo-info">
+        <div class="tag-row" style="margin-bottom:0.5rem;">
+          <span class="tag">Prosthetic</span>
+          <span class="tag">Hardware</span>
+        </div>
+        <h3>AI Forearm Prototype</h3>
+        <p>5-servo actuated mechanical hand assembled with MyoWare EMG signal processing, ESP32, and Raspberry Pi modules.</p>
+        <div class="card-footer">
+          <a class="card-btn" href="projects-prosthetic.html">View Project →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="photo-card">
+      <img src="chassis image.png" alt="Pocketed Aluminum Chassis" />
+      <div class="photo-info">
+        <div class="tag-row" style="margin-bottom:0.5rem;">
+          <span class="tag">CNC Machining</span>
+          <span class="tag">Chassis</span>
+        </div>
+        <h3>Milled Aluminum Chassis</h3>
+        <p>Finished 6061 aluminum plate chassis featuring custom pocketing paths to optimize rigidity-to-weight ratios.</p>
+        <div class="card-footer">
+          <a class="card-btn" href="projects-ftc.html">See Deep Dive →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="photo-card">
+      <img src="WhatsApp Image 2026-08-24 at 11.01.40 PM (1).jpeg" alt="Custom Workstation Build" />
+      <div class="photo-info">
+        <div class="tag-row" style="margin-bottom:0.5rem;">
+          <span class="tag">Custom PC</span>
+          <span class="tag">Workstation</span>
+        </div>
+        <h3>CAD Workstation Internal Setup</h3>
+        <p>NZXT H6 Flow RGB casing setup populated with liquid cooling loops and an RTX 4060 Ti graphics processor.</p>
+        <div class="card-footer">
+          <a class="card-btn" href="projects-pc.html">View Specs →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="photo-card">
+      <img src="Screenshot 2025-09-12 201517.png" alt="Sprung PTO Gearbox" />
+      <div class="photo-info">
+        <div class="tag-row" style="margin-bottom:0.5rem;">
+          <span class="tag">Sneak Peek</span>
+          <span class="tag">3D Printing</span>
+        </div>
+        <h3>Sprung PTO System V2</h3>
+        <p>Exploded CAD assembly layout of the custom Sprung Power Take-Off drivetrain power engagement system.</p>
+        <div class="card-footer">
+          <a class="card-btn" href="projects-ftc.html">See Deep Dive →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<footer>Built with HTML &amp; CSS · Hosted on GitHub Pages</footer>
+</body>
+</html>
